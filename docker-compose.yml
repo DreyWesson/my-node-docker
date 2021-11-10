@@ -1,0 +1,18 @@
+version: "3"
+services:
+  node-image:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env
+
+  mongo:
+    image: mongo
+    env_file:
+      - ./.env
+    volumes:
+      - name_db_volume:/data/db
+
+volumes:
+  name_db_volume:
