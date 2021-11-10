@@ -81,6 +81,16 @@ NB: To set env variables from a .env file use --env-file flag `docker run -v /ap
    Then, start up docker `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d` and use `docker volume prune` to remove all inactive volume
 4. (This 1st method is sloppy)To get the IP-ADDRESS of a docker container, you'll use `docker inspect <container_name>` and paste in the mongoose connection URL.
    (Better method)=>We use our service name (in this case mongo) to get the IP-ADDRESS using `docker network ls`
-5. Check if the Database is connected by using `docker logs <node-app_container-name>`
+5. Check if the Database is connected, Server status etc by using `docker logs <node-app_container-name>` and if you want to wait on some connections add `-f` flag: `docker logs <node-app_container-name> -f`.
 6. To inspect the network of a particular container:
    `docker network inspect node-docker_default`
+
+### Setting order of container startup
+
+1. We use the `depends_on` flag to set the order of container startup.
+2. Then, u can implement a logic in ur app to handle d scenario
+
+### Starting just a particular service
+
+By adding `--no-deps` flag to
+`docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps service_name`
