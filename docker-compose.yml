@@ -1,9 +1,14 @@
 version: "3"
 services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
   node-image:
     build: .
-    ports:
-      - "3000:3000"
     env_file:
       - ./.env
     depends_on:
@@ -20,8 +25,6 @@ services:
     image: redis
     env_file:
       - ./.env
-    # volumes:
-    #   - name_redis_volume:/data/redis
 
 volumes:
   name_db_volume:

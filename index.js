@@ -20,7 +20,7 @@ app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/users", userRouter);
 
 const port = process.env.PORT || 3000;
-app.get("/", (req, res) => res.send("Hello World"));
+app.get("/api/v1", (req, res) => res.send("Hello World"));
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
