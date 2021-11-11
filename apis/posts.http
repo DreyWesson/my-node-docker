@@ -1,11 +1,12 @@
+@baseURL = http://localhost:3000/api/v1/posts
 ### Get all posts
-GET http://localhost:3000/api/v1/posts
+GET {{baseURL}}
 
 ### Get a post
-GET http://localhost:3000/api/v1/posts/618cb9f8d42713aed59091ca
+GET {{baseURL}}/618cb9f8d42713aed59091ca
 
 ### Create post
-POST http://localhost:3000/api/v1/posts/
+POST {{baseURL}}
 content-type: application/json
 
 {
@@ -14,7 +15,7 @@ content-type: application/json
 }
 
 ### Update post
-PATCH http://localhost:3000/api/v1/posts/618cb9f8d42713aed59091ca
+PATCH {{baseURL}}/618cb9f8d42713aed59091ca
 content-type: application/json
 
 {
@@ -23,5 +24,5 @@ content-type: application/json
 }
 
 ### Delete post
-DELETE http://localhost:3000/api/v1/posts/618cb6e3c6d56e8f29d99b26
+DELETE {{baseURL}}/618cb9f8d42713aed59091ca
 content-type: application/json

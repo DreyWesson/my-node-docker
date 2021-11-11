@@ -16,5 +16,12 @@ services:
     volumes:
       - name_db_volume:/data/db
 
+  redis:
+    image: redis
+    env_file:
+      - ./.env
+    # volumes:
+    #   - name_redis_volume:/data/redis
+
 volumes:
   name_db_volume:

@@ -1,4 +1,5 @@
 const protect = (req, res, next) => {
+  console.log(req.session);
   const { user } = req.session;
 
   if (!user) {

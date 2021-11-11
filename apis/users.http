@@ -1,0 +1,17 @@
+### Create post
+POST http://localhost:3000/api/v1/users/signup
+content-type: application/json
+
+{
+  "username": "debug6",
+  "password": "test"
+}
+
+### Create post
+POST http://localhost:3000/api/v1/users/login
+content-type: application/json
+
+{
+  "username": "debug",
+  "password": "test"
+}
