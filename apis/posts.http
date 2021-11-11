@@ -1,0 +1,27 @@
+### Get all posts
+GET http://localhost:3000/api/v1/posts
+
+### Get a post
+GET http://localhost:3000/api/v1/posts/618cb9f8d42713aed59091ca
+
+### Create post
+POST http://localhost:3000/api/v1/posts/
+content-type: application/json
+
+{
+  "title": "My first post 2",
+  "body": "This is my first post 2"
+}
+
+### Update post
+PATCH http://localhost:3000/api/v1/posts/618cb9f8d42713aed59091ca
+content-type: application/json
+
+{
+  "title": "My first post 2",
+  "body": "This is my first post 2"
+}
+
+### Delete post
+DELETE http://localhost:3000/api/v1/posts/618cb6e3c6d56e8f29d99b26
+content-type: application/json

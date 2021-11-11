@@ -1,29 +1,19 @@
-const app = require("express")();
-const mongoose = require("mongoose");
+const express = require("express");
+
 require("dotenv").config();
+const postRouter = require("./routes/posts.route.js");
+const retryConnect = require("./config/db.js");
 
-const { MONGO_USER, MONGO_IP, MONGO_PORT, MONGO_PASSWORD } = process.env;
-const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${
-  MONGO_IP || "mongo"
-}:${MONGO_PORT || 27017}/?authSource=admin`;
-
-const retryConnect = () => {
-  mongoose
-    .connect(mongoURL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then(() => console.log("DB connected"))
-    .catch((e) => {
-      console.log(e);
-      setTimeout(retryConnect, 5000);
-    });
-};
-
+// Connect to DB
 retryConnect();
 
+const app = express();
+app.use(express.json());
+app.use("/api/v1/posts", postRouter);
+// app.use("/api/v1/user")
+
 const port = process.env.PORT || 3000;
-app.get("/", (req, res) => res.send("Hello World!!!"));
+app.get("/", (req, res) => res.send("Hello World"));
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
