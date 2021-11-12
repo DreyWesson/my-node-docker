@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const morgan = require("morgan");
 
 require("dotenv").config();
 const postRouter = require("./routes/posts.route.js");
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(runRedis);
 app.use(express.json());
+app.use(morgan("dev"));
 app.enable("trust proxy");
 app.use(cors({}));
 
@@ -20,7 +22,7 @@ app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/users", userRouter);
 
 const port = process.env.PORT || 3000;
-app.get("/", (req, res) => res.send("Hello World"));
+app.get("/api/v1", (req, res) => res.send("Hello World"));
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

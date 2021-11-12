@@ -1,9 +1,16 @@
 version: "3"
 services:
+  nginx:
+    image: nginx:stable-alpine
+    # ports:
+    # - "3000:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - node-image
+
   node-image:
     build: .
-    ports:
-      - "3000:3000"
     env_file:
       - ./.env
     depends_on:
