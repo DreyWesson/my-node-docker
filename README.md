@@ -94,27 +94,3 @@ NB: To set env variables from a .env file use --env-file flag `docker run -v /ap
 
 By adding `--no-deps` flag to
 `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps service_name`
-
-### Creating more than one container - Using nginx
-
-1. Create nginx folder and deafult.conf file in it
-2.
-
-```bash
-    server {
-        listen 80;
-
-        location /api {
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-            proxy_set_header Host $http_host;
-            proxy_set_header X-NginX-Proxy true;
-            proxy_pass http://node-app:3000;
-            proxy_redirect off;
-
-        }
-    }
-```
-
-3. Now we can remove the port in our node-image container

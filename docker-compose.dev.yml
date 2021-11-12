@@ -1,9 +1,5 @@
 version: "3"
 services:
-  nginx:
-    ports:
-      - "3000:80"
-
   node-image:
     build:
       context: .
