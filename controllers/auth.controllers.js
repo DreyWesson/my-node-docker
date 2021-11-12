@@ -20,9 +20,10 @@ exports.signUp = async (req, res) => {
       },
     });
   } catch (e) {
-    res.status(400).json({
-      status: "fail",
-    });
+    // res.status(400).json({
+    //   status: "fail",
+    // });
+    next(e);
   }
 };
 
@@ -53,8 +54,9 @@ exports.login = async (req, res) => {
       });
     }
   } catch (e) {
-    res.status(400).json({
-      status: "fail",
-    });
+    // res.status(400).json({
+    //   status: "fail",
+    // })
+    next(e);
   }
 };

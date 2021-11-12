@@ -1,12 +1,17 @@
+const createError = require("http-errors");
 const protect = (req, res, next) => {
-  const { user } = req.session;
+  try {
+    const { user } = req.session;
 
-  if (!user)
-    return res.status(401).json({ status: "fail", message: "unauthorized" });
+    if (!user) throw createError.Unauthorized();
+    // return res.status(401).json({ status: "fail", message: "unauthorized" });
 
-  req.user = user;
+    req.user = user;
 
-  next();
+    next();
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = protect;

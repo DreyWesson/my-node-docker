@@ -13,9 +13,10 @@ exports.getAllPosts = async (req, res, next) => {
     });
   } catch (e) {
     console.log(e);
-    res.status(400).json({
-      status: "fail",
-    });
+    next(e);
+    // res.status(400).json({
+    //   status: "fail",
+    // });
   }
 };
 
@@ -30,9 +31,10 @@ exports.getOnePost = async (req, res, next) => {
       },
     });
   } catch (e) {
-    res.status(400).json({
-      status: "fail",
-    });
+    next(e);
+    // res.status(400).json({
+    //   status: "fail",
+    // });
   }
 };
 
@@ -49,9 +51,10 @@ exports.createPost = async (req, res, next) => {
     });
   } catch (e) {
     console.log(e);
-    res.status(400).json({
-      status: "fail",
-    });
+    next(e);
+    // res.status(400).json({
+    //   status: "fail",
+    // });
   }
 };
 
@@ -69,9 +72,10 @@ exports.updatePost = async (req, res, next) => {
       },
     });
   } catch (e) {
-    res.status(400).json({
-      status: "fail",
-    });
+    // res.status(400).json({
+    //   status: "fail",
+    // });
+    next(e);
   }
 };
 
@@ -86,8 +90,9 @@ exports.deletePost = async (req, res, next) => {
           status: "Post doesn't exist",
         });
   } catch (e) {
-    res.status(400).json({
-      status: "fail",
-    });
+    // res.status(400).json({
+    //   status: "fail",
+    // });
+    next(e);
   }
 };
