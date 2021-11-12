@@ -26,6 +26,9 @@ app.get("/api/v1", (req, res) => {
   res.send("Hello World");
   console.log("It ran");
 });
+app.get("/", (req, res) => {
+  res.send("Hello World!!!");
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
