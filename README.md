@@ -97,3 +97,5 @@ By adding `--no-deps` flag:
 
 3. Now to add 2 instances of our app use the `--scale` flag:
    `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale node-image=#2_or_num_to_spin-up`. Then, use `docker ps` to see the number of containers. And use `docker logs...-f` and `docker exec...sh` to check if the containers are running.
+
+### Going to production
